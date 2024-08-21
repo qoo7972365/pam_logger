@@ -3,15 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
-
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
 
 var (
-	Logfile       string = "/var/log/.passwords.log"
-	TelegramToken string = "###這裡改成TG token"
+	Logfile       string = "/tmp/.passwords.log"
+	TelegramToken string = "1234456:xxxxxxxxxxxxxxxxx" //這裡改成TG token
 	ChatID        int64  = 123213 // 替換為你的Chat ID
 )
 

